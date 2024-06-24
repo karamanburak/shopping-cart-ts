@@ -1,11 +1,11 @@
-import { Container, Nav, Navbar as NavbarBs } from "react-bootstrap"
+import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap"
 import { NavLink } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 
 
 const Navbar = () => {
     return (
-        <NavbarBs className="bg-white shadow-sm mb-3">
+        <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
             <Container>
                 <Nav className="me-auto">
                     <Nav.Link to="/" as={NavLink}>
@@ -18,9 +18,21 @@ const Navbar = () => {
                         About
                     </Nav.Link>
                 </Nav>
-                <Nav.Link to="/cart" as={NavLink}>
+                <Button variant="outline-primary" style={{ position: "relative" }}>
                     <MdAddShoppingCart className="fs-3" />
-                </Nav.Link>
+                    <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                        style={{
+                            color: "white",
+                            width: "1.5rem",
+                            height: "1.5rem",
+                            position: "absolute",
+                            bottom: 0,
+                            right: 0,
+                            transform: "translate(25%, 25%)"
+                        }}>
+                        3
+                    </div>
+                </Button>
             </Container>
         </NavbarBs>
     )
