@@ -1,9 +1,11 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap"
 import { NavLink } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 
 const Navbar = () => {
+    const { toggleVisibility, cartQuantity } = useShoppingCart()
     return (
         <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
             <Container>
@@ -18,20 +20,26 @@ const Navbar = () => {
                         About
                     </Nav.Link>
                 </Nav>
-                <Button variant="outline-primary" style={{ position: "relative" }}>
+                <Button
+                    variant="outline-primary"
+                    style={{ position: "relative" }}
+                    onClick={toggleVisibility}
+                >
                     <MdAddShoppingCart className="fs-3" />
-                    <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
-                        style={{
-                            color: "white",
-                            width: "1.5rem",
-                            height: "1.5rem",
-                            position: "absolute",
-                            bottom: 0,
-                            right: 0,
-                            transform: "translate(25%, 25%)"
-                        }}>
-                        3
-                    </div>
+                    {cartQuantity > 0 && (
+                        <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                            style={{
+                                color: "white",
+                                width: "1.5rem",
+                                height: "1.5rem",
+                                position: "absolute",
+                                bottom: 0,
+                                right: 0,
+                                transform: "translate(25%, 25%)"
+                            }}>
+                            {cartQuantity}
+                        </div>)}
+
                 </Button>
             </Container>
         </NavbarBs>
