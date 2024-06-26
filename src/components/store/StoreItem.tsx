@@ -2,21 +2,22 @@ import { Button, Card } from "react-bootstrap";
 import { formatCurrency } from "../../utilities/formatCurrency";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 
-interface IStoreItem {
-    id: number,
-    name: string,
-    price: number,
+type StoreItemProps = {
+    id: number
+    name: string
+    price: number
     imgUrl: string
 }
 
-const StoreItem: React.FC<IStoreItem> = ({ id, name, price, imgUrl }) => {
+export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
     const {
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
-        removeFromCart
+        removeFromCart,
     } = useShoppingCart()
     const quantity = getItemQuantity(id)
+
     return (
         <Card className="h-100">
             <Card.Img

@@ -5,7 +5,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 
 
 const Navbar = () => {
-    const { toggleVisibility, cartQuantity } = useShoppingCart()
+    const { toggleCartVisibility, cartQuantity } = useShoppingCart()
     return (
         <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
             <Container>
@@ -23,7 +23,7 @@ const Navbar = () => {
                 <Button
                     variant="outline-primary"
                     style={{ position: "relative" }}
-                    onClick={toggleVisibility}
+                    onClick={toggleCartVisibility}
                 >
                     <MdAddShoppingCart className="fs-3" />
                     {cartQuantity > 0 && (
